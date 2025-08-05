@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 axios.defaults.withCredentials = true;
@@ -120,4 +120,5 @@ const useAuth = () => {
 };
 
 export { AuthProvider, useAuth };
+
 export default AuthProvider;
