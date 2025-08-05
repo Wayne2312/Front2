@@ -109,11 +109,15 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const response = await axios.post(`${API}/auth/register/`, {
-        email,
-        password,
-        name,
-        role,
-      });
+      email,
+      password,
+      name,
+      role  // Only include if your backend accepts it
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
       const { user: userData, access_token } = response.data;
 
@@ -177,3 +181,4 @@ const useAuth = () => {
 
 export { AuthProvider, useAuth };
 export default AuthProvider;
+
